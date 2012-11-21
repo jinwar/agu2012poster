@@ -1,0 +1,255 @@
+\documentclass[paperwidth=65in,paperheight=43in,landscape,final,fontscale=0.23]{baposter}
+
+\usepackage{times}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{relsize}
+\usepackage{multirow}
+\usepackage{bm}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\usepackage{pgfbaselayers}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\usepackage{helvet}
+%\usepackage{bookman}
+\usepackage{palatino}
+
+\newcommand{\captionfont}{\footnotesize}
+
+\selectcolormodel{rgb}
+
+\graphicspath{{images/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Some math symbols used in the text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Format 
+\newcommand{\Matrix}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\Vector}[1]{\Matrix{#1}}
+\newcommand*{\SET}[1]  {\ensuremath{\mathcal{#1}}}
+\newcommand*{\MAT}[1]  {\ensuremath{\mathbf{#1}}}
+\newcommand*{\VEC}[1]  {\ensuremath{\bm{#1}}}
+\newcommand*{\CONST}[1]{\ensuremath{\mathit{#1}}}
+\newcommand*{\norm}[1]{\mathopen\| #1 \mathclose\|}% use instead of $\|x\|$
+\newcommand*{\abs}[1]{\mathopen| #1 \mathclose|}% use instead of $\|x\|$
+\newcommand*{\absLR}[1]{\left| #1 \right|}% use instead of $\|x\|$
+
+\def\norm#1{\mathopen\| #1 \mathclose\|}% use instead of $\|x\|$
+\newcommand{\normLR}[1]{\left\| #1 \right\|}% use instead of $\|x\|$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Multicol Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\columnsep}{0.7em}
+\setlength{\columnseprule}{0mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Save space in lists. Use this after the opening of the list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{%
+\setlength{\itemsep}{1pt}%
+\setlength{\parskip}{0pt}%
+\setlength{\parsep}{0pt}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Begin of Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Here starts the poster
+%%%---------------------------------------------------------------------------
+%%% Format it to your taste with the options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\typeout{Poster Starts}
+\background{
+  \begin{tikzpicture}[remember picture,overlay]%
+    \draw (current page.north west)+(-2em,-0em) node[anchor=north west] {\hspace{-2em}\includegraphics[height=1.1\textheight]{silhouettes_background}};
+  \end{tikzpicture}%
+}
+\definecolor{white}{rgb}{1,1,1}
+\definecolor{lightblue}{rgb}{0.835,0.9,0.937}
+\definecolor{darkblue}{rgb}{0.05,0.04,0.8}
+\begin{poster}{
+  % Show grid to help with alignment
+  grid=false,
+  columns=4,
+  % Column spacing
+  colspacing=1em,
+  % Color style
+  bgColorOne=white,
+  bgColorTwo=white,
+  borderColor=darkblue,
+  headerColorOne=darkblue,
+  headerColorTwo=darkblue,
+  headerFontColor=white,
+  boxColorOne=lightblue,
+  boxColorTwo=lightblue,
+  % Format of textbox
+  textborder=rounded,
+  % Format of text header
+  eyecatcher=false,
+  headerborder=open,
+  headerheight=0.10\textheight,  % title size
+  headershape=rounded,
+  headershade=plain,
+  headerfont=\LARGE\textsf, %Sans Serif
+  boxshade=plain,
+%  background=shade-tb,
+  background=plain,
+  linewidth=2pt,
+  }
+  % Eye Catcher
+  {} % No eye catcher for this poster. If an eye catcher is present, the title is centered between eye-catcher and logo.
+  % Title
+  {\sf %Sans Serif
+  %\bf% Serif
+  \vspace{0.8em}
+
+  Imaging Crust and Mantle Structure beneath the D'Entrecasteaux 
+  Islands from Rayleigh Wave Tomography}
+  % Authors
+  {\sf %Sans Serif
+  % Serif
+  Ge Jin, James Gaherty, Geoff Abers, YoungHee Kim, Zach Eilon, Roger Buck, Ron Varave\hspace{1em}
+  ge.jin@ldeo.columbia.edu
+  }
+  % University logo
+  {{\begin{minipage}{30em}
+    \hfill
+	\vfill
+    \includegraphics[width=30em]{pics/ldeologo}
+  \end{minipage}}
+  }
+
+  \tikzstyle{light shaded}=[top color=baposterBGtwo!30!white,bottom color=baposterBGone!30!white,shading=axis,shading angle=30]
+
+  % Width of left inset image
+     \newlength{\leftimgwidth}
+     \setlength{\leftimgwidth}{0.78em+8.0em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Now define the boxes that make up the poster
+%%%---------------------------------------------------------------------------
+%%% Each box has a name and can be placed absolutely or relatively.
+%%% The only inconvenience is that you can only specify a relative position 
+%%% towards an already declared box. So if you have a box attached to the 
+%%% bottom, one to the top and a third one which should be in between, you 
+%%% have to specify the top and bottom boxes before you specify the middle 
+%%% box.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %
+    % A coloured circle useful as a bullet with an adjustably strong filling
+    \newcommand{\colouredcircle}[1]{%
+      \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=baposterBGone!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Introduction}{name=introduction,column=0,row=0,span=2}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ultra high pressure (UHP) terranes are generally considered as continental crustal material being subducted to mantle depth and then exhumed to surface. The youngest UHP rocks in the world are found in the D'Entrecasteaux Islands, Papua New Guinea. These 7-8 Ma coesite-eclogite face rocks indicate different geological history from other UHP rocks for the exhumation process not associating with the subduction either spacially or temporally. The burial of these UHP rocks is thought to be during the arc-continent collision between Australian Plate and Papua New Guinea mainland about 58Ma ago (Lus et al., 2004, Ellis et al., 2011). And afterwards they remained mantle depth for ~30Ma before rapidly exhumed to surface from ~5Ma at the rate around 1cm/yr (Baldwin et al., 2004; Gordon et al., 2012). 
+
+Evidences show strong relation between the exhumation and the west propagation of Woodlark Rift, which is an active transition zone from continental rifting to seafloor spreading. Strong crustal extension may favor the exhumation in two ways: reversing subduction that extract UHP continental crust along the paleo-subduction channel, or thinning the upperplate crust to help the buoyant UHP rocks penetrate through as diapirs.
+
+In this study we investigate the dynamic processes driving uplift and extension using Rayleigh wave phase velocity imaging for both teleseismic and ambient noise measurement to explore the crust and upper mantle structure across this region.
+ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Ambient Noise}{name=noise,column=0,span=1,below=introduction}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Because short intra-station distance violate the far-field estimation of time-domain ambient noise method, we applied the original Aki's spectral formulation which was further developed by Eskstr\"{o}m et al., 2009. The key result of these papers can be presented as equation~\ref{eqn:aki}:
+\begin{equation}
+\bar{\rho}(r,\omega) = J_0\left(\frac{\omega}{c(\omega)}r \right)
+\label{eqn:aki}
+\end{equation}
+where $\bar{\rho}$ is the real part of normalized cross-spectrum, $c(\omega)$ is the phase velocity for different frequency $\omega$.
+
+In this study, we fit the whole Bessel function in the interested frequency band instead of counting only zero-crossings of cross-spectrum.
+
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \headerbox{Distance Measure}{name=measure,column=0,below=fitting,above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   The Mahalanobis angle between the identity coefficients $\VEC{\alpha_{n}}$
+%   was used for classification.
+%  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Array-based GSDF}{name=gsdf,column=0,below=noise,span=1,above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Array-based GSDF method is developed from Generalized Seismological Data Functionals method (Gee et al,.1992).
+Array-based GSDF method measure the phase difference between nearby stations by calculat
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Eikonal Tomography}{name=eikonal,column=1,span=1,below=introduction,above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Results}{name=results,column=2,span=2,row=0}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \begin{multicols}{2}
+        The method was evaluated on the GavabDB expression dataset which
+        contains 427 Scans, with 3 neutral scans and 4 expression scans per ID.
+        To test the impact of expression invariance on neutral data we used the
+        UND Dataset from the Face Recognition Great Vendor Test, which contains
+        953 neutral scans with one to eight scans per subject.
+      \end{multicols}\vspace{-1em}
+      \mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
+      \begin{tabular}{cc}
+        \hspace{0.5em}\scalebox{0.74}{\input{shrec_MNCG}} &
+        \hspace{0.5em}\scalebox{0.74}{\input{und_MNCG}}
+      \end{tabular}\\
+%      \begin{multicols}{2}
+        {Expression neutralization improves results on the expression dataset
+        without decreasing the accuracy on the neutral testset. Plotted is the
+        ratio of correct answers to  the number of possible correct answers.
+        %Note the different scales for the two graphs.
+        %Our approach has a high accuracy on the neutral (UND) dataset.
+        }
+%      \end{multicols}\vspace{-1em}
+      \\\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
+      \begin{tabular}{cc}
+        \hspace{0.5em}\scalebox{0.74}{\input{shrec_PR}} &
+        \hspace{0.5em}\scalebox{0.74}{\input{und_PR}}
+      \end{tabular}\\
+%      \begin{multicols}{2}
+        {Plotted are precision and recall for different retrieval depths. The lower
+        precision of the UND database is due to the fact that some queries have no
+        correct answers.}
+%      \end{multicols}\vspace{-1em}
+      \\\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
+      \begin{tabular}{cc}
+        \hspace{0.5em}\scalebox{0.74}{\input{shrec_FARFRR}} &
+        \hspace{0.5em}\scalebox{0.74}{\input{und_FARFRR}}
+      \end{tabular}\\
+%      \begin{multicols}{2}
+        {Impostor detection is reliable, as the minimum distance to a match
+        is smaller than the minimum distance to a nonmatch. }
+%      \end{multicols}
+\\
+  }%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Conclusion}{name=conclusion,column=2,span=1,above=bottom,below=results}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  }%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Future Work}{name=future,column=3,span=1,above=bottom,below=results}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \smaller 
+  }%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{poster}%
+%
+\end{document}
