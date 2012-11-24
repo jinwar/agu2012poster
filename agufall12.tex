@@ -179,13 +179,6 @@ In this study, we fit the whole Bessel function in the interested frequency band
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  \headerbox{Distance Measure}{name=measure,column=0,below=fitting,above=bottom}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   The Mahalanobis angle between the identity coefficients $\VEC{\alpha_{n}}$
-%   was used for classification.
-%  }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Array-based GSDF}{name=gsdf,column=0,below=noise,span=1,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Array-based GSDF method is developed from Generalized Seismological Data Functionals method (Gee et al,.1992).
@@ -199,46 +192,16 @@ Array-based GSDF method measure the phase difference between nearby stations by 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Results}{name=results,column=2,span=2,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \begin{multicols}{2}
-        The method was evaluated on the GavabDB expression dataset which
-        contains 427 Scans, with 3 neutral scans and 4 expression scans per ID.
-        To test the impact of expression invariance on neutral data we used the
-        UND Dataset from the Face Recognition Great Vendor Test, which contains
-        953 neutral scans with one to eight scans per subject.
-      \end{multicols}\vspace{-1em}
-      \mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
-      \begin{tabular}{cc}
-        \hspace{0.5em}\scalebox{0.74}{\input{shrec_MNCG}} &
-        \hspace{0.5em}\scalebox{0.74}{\input{und_MNCG}}
-      \end{tabular}\\
-%      \begin{multicols}{2}
-        {Expression neutralization improves results on the expression dataset
-        without decreasing the accuracy on the neutral testset. Plotted is the
-        ratio of correct answers to  the number of possible correct answers.
-        %Note the different scales for the two graphs.
-        %Our approach has a high accuracy on the neutral (UND) dataset.
-        }
-%      \end{multicols}\vspace{-1em}
-      \\\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
-      \begin{tabular}{cc}
-        \hspace{0.5em}\scalebox{0.74}{\input{shrec_PR}} &
-        \hspace{0.5em}\scalebox{0.74}{\input{und_PR}}
-      \end{tabular}\\
-%      \begin{multicols}{2}
-        {Plotted are precision and recall for different retrieval depths. The lower
-        precision of the UND database is due to the fact that some queries have no
-        correct answers.}
-%      \end{multicols}\vspace{-1em}
-      \\\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
-      \begin{tabular}{cc}
-        \hspace{0.5em}\scalebox{0.74}{\input{shrec_FARFRR}} &
-        \hspace{0.5em}\scalebox{0.74}{\input{und_FARFRR}}
-      \end{tabular}\\
-%      \begin{multicols}{2}
-        {Impostor detection is reliable, as the minimum distance to a match
-        is smaller than the minimum distance to a nonmatch. }
-%      \end{multicols}
-\\
+  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
+    \includegraphics[width=0.30\linewidth]{pics/noise/phasev_04}&
+    \includegraphics[width=0.30\linewidth]{pics/noise/phasev_07}&
+    \includegraphics[width=0.30\linewidth]{pics/noise/phasev_10}\\[-0.8em]
+    \smaller a) Target & \smaller b) Fit & \smaller c) Normalized\\[0.8em]
+    \includegraphics[width=0.30\linewidth]{pics/noise/phasev_04}&
+    \includegraphics[width=0.30\linewidth]{pics/noise/phasev_07}&
+    \includegraphics[width=0.30\linewidth]{pics/noise/phasev_10}\\[-0.8em]
+    \smaller a) Target & \smaller b) Fit & \smaller c) Normalized
+  \end{tabular}
   }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Conclusion}{name=conclusion,column=2,span=1,above=bottom,below=results}{
