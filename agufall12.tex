@@ -1,4 +1,4 @@
-\documentclass[paperwidth=65in,paperheight=43in,landscape,final,fontscale=0.24]{baposter}
+\documentclass[paperwidth=65in,paperheight=43in,landscape,final,fontscale=0.30]{baposter}
 
 \usepackage{times}
 \usepackage{calc}
@@ -127,7 +127,7 @@
     }
   % University logo
   {
-  {\begin{minipage}{30em}
+  {\begin{minipage}{35em}
 	  \vfill
 	  \hfill
 		\includegraphics[width=30em]{pics/ldeologo}
@@ -200,7 +200,12 @@ where $F_i$ is the ith narrow-band filter function, $W$ is window function, $C$ 
 
 \textbf{\large Eikonal Tomography}
 
-For each ``event'', Eikonal tomography calculate the distribution of slowness vector based on the phase difference measurement between nearby stations. 
+For each ``event'', Eikonal tomography reconstruct the slowness vector of wave field based on the phase difference measurement between nearby stations. In this study, event wave field can be either the Rayleigh wave of an earthquake, or Green functions from one station's ambient noise cross-correlation with all other stations. Any phase difference measurement $\delta t$ between two stations can be presented as:
+\begin{equation}
+	\delta t = \int\limits_{\vec{r}} \vec{S} \cdot d\vec{r}
+\label{eqn:eikonal}
+\end{equation}
+where $\vec{S}$ is the slowness vector for the event, $\vec{r}$ is a path connecting two stations. We found that the great circle path between these two stations provides most stable inversion result.
   }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Results}{name=results,column=2,span=2,row=0}{
