@@ -101,7 +101,7 @@
   % Format of text header
   eyecatcher=false,
   headerborder=open,
-  headerheight=0.10\textheight,  % title size
+  headerheight=0.12\textheight,  % title size
   headershape=rounded,
   headershade=plain,
   headerfont=\LARGE\textsf, %Sans Serif
@@ -122,14 +122,15 @@
   % Authors
   {\sf %Sans Serif
   % Serif
-  Ge Jin, James Gaherty, Geoff Abers, YoungHee Kim, Zach Eilon, Roger Buck, Ron Varave\hspace{1em}
-  ge.jin@ldeo.columbia.edu
-  }
+  Ge Jin, James Gaherty, Geoff Abers, YoungHee Kim, Zach Eilon, Roger Buck, Ron Varave \\
+  \small{ AGU 2012 Fall Meeting:\textbf{T43E-2719} Contact Email: ge.jin@ldeo.columbia.edu}
+    }
   % University logo
-  {{\begin{minipage}{30em}
-    \hfill
-	\vfill
-    \includegraphics[width=30em]{pics/ldeologo}
+  {
+  {\begin{minipage}{30em}
+	  \vfill
+	  \hfill
+		\includegraphics[width=30em]{pics/ldeologo}
   \end{minipage}}
   }
 
@@ -167,6 +168,7 @@ In this study we investigate the dynamic processes driving uplift and extension 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Ambient Noise}{name=noise,column=0,span=1,below=introduction}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ambient Noise}
 Because short intra-station distance violate the far-field estimation of time-domain ambient noise method, we applied the original Aki's spectral formulation which was further developed by Eskstr\"{o}m et al., 2009. The key result of these papers can be presented as equation~\ref{eqn:aki}:
 \begin{equation}
 \bar{\rho}(r,\omega) = J_0\left(\frac{\omega}{c(\omega)}r \right)
@@ -176,13 +178,19 @@ where $\bar{\rho}$ is the real part of normalized cross-spectrum, $c(\omega)$ is
 
 In this study, we fit the whole Bessel function in the interested frequency band instead of counting only zero-crossings of cross-spectrum.
 
+\subsection{GSDF}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Array-based GSDF}{name=gsdf,column=0,below=noise,span=1,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Array-based GSDF method is developed from Generalized Seismological Data Functionals method (Gee et al,.1992).
-Array-based GSDF method measure the phase difference between nearby stations by calculat
+Array-based GSDF method measures the Rayleigh wave phase difference between nearby stations by fitting a five-parameter wavelet to the narrow-band filtered cross-correlation of the seismograms. The wavelet can be presented as (Gee \& Jordan, 1992):
+\begin{equation}
+F_i W C(t) \approx A \exp \left[ - \frac{\sigma_i^2(t -t_g)^2}{2} \right] \cos \left[ \omega_i(t-t_p) \right]
+\label{eqn:gsdf}
+\end{equation}
+where $F_i$ is the ith narrow-band filter function, $W$ is window function, $C$ is the cross-correlation function, $\sigma_i$ is the band width of the filter, $\sigma_i$ is the center frequency of the filter, $t_g$ and $t_p$ are the relative group delay and phase delay between these two stations, perspectively.
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,16 +200,28 @@ Array-based GSDF method measure the phase difference between nearby stations by 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Results}{name=results,column=2,span=2,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
-    \includegraphics[width=0.20\linewidth]{pics/noise/phasev_04}&
-    \includegraphics[width=0.20\linewidth]{pics/noise/phasev_07}&
-    \includegraphics[width=0.20\linewidth]{pics/noise/phasev_10}\\[-0.8em]
-    \smaller a) Target & \smaller b) Fit & \smaller c) Normalized\\[0.8em]
-    \includegraphics[width=0.20\linewidth]{pics/noise/phasev_04}&
-    \includegraphics[width=0.20\linewidth]{pics/noise/phasev_07}&
-    \includegraphics[width=0.20\linewidth]{pics/noise/phasev_10}\\[-0.8em]
-    \smaller a) Target & \smaller b) Fit & \smaller c) Normalized
-  \end{tabular}
+  Result from Ambient Noise:
+  \begin{center}
+	  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
+		\includegraphics[width=0.20\linewidth]{pics/noise/phasev_13}&
+		\includegraphics[width=0.20\linewidth]{pics/noise/phasev_10}&
+		\includegraphics[width=0.20\linewidth]{pics/noise/phasev_07}&
+		\includegraphics[width=0.20\linewidth]{pics/noise/phasev_04}\\
+		 9.1s &  10.9s  &   13.4s &   17.4s \\[0.8em]
+	  \end{tabular}
+  \end{center}
+
+	  Result from earthquake:
+
+  \begin{center}
+	  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
+		\includegraphics[width=0.20\linewidth]{pics/eq/eqeikonal_0}&
+		\includegraphics[width=0.20\linewidth]{pics/eq/eqeikonal_1}&
+		\includegraphics[width=0.20\linewidth]{pics/eq/eqeikonal_2}&
+		\includegraphics[width=0.20\linewidth]{pics/eq/eqeikonal_3}\\
+		 20s &  25s  &   32s &  40s \\[0.8em]
+	  \end{tabular}
+  \end{center}
   }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Conclusion}{name=conclusion,column=2,span=1,above=bottom,below=results}{
