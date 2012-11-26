@@ -1,4 +1,4 @@
-\documentclass[paperwidth=65in,paperheight=43in,landscape,final,fontscale=0.23]{baposter}
+\documentclass[paperwidth=65in,paperheight=43in,landscape,final,fontscale=0.24]{baposter}
 
 \usepackage{times}
 \usepackage{calc}
@@ -156,7 +156,7 @@
       \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=baposterBGone!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Introduction}{name=introduction,column=0,row=0,span=2}{
+  \headerbox{Introduction}{name=introduction,column=0,row=0,span=1}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Ultra high pressure (UHP) terranes are generally considered as continental crustal material being subducted to mantle depth and then exhumed to surface. The youngest UHP rocks in the world are found in the D'Entrecasteaux Islands, Papua New Guinea. These 7-8 Ma coesite-eclogite face rocks indicate different geological history from other UHP rocks for the exhumation process not associating with the subduction either spacially or temporally. The burial of these UHP rocks is thought to be during the arc-continent collision between Australian Plate and Papua New Guinea mainland about 58Ma ago (Lus et al., 2004, Ellis et al., 2011). And afterwards they remained mantle depth for ~30Ma before rapidly exhumed to surface from ~5Ma at the rate around 1cm/yr (Baldwin et al., 2004; Gordon et al., 2012). 
 
@@ -166,9 +166,16 @@ In this study we investigate the dynamic processes driving uplift and extension 
  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Ambient Noise}{name=noise,column=0,span=1,below=introduction}{
+  \headerbox{Data}{name=data,column=0,span=1,below=introduction,above = bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Ambient Noise}
+
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Method}{name=method2,column=1,span=1,row=0}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{\large Ambient Noise}
+
 Because short intra-station distance violate the far-field estimation of time-domain ambient noise method, we applied the original Aki's spectral formulation which was further developed by Eskstr\"{o}m et al., 2009. The key result of these papers can be presented as equation~\ref{eqn:aki}:
 \begin{equation}
 \bar{\rho}(r,\omega) = J_0\left(\frac{\omega}{c(\omega)}r \right)
@@ -178,24 +185,22 @@ where $\bar{\rho}$ is the real part of normalized cross-spectrum, $c(\omega)$ is
 
 In this study, we fit the whole Bessel function in the interested frequency band instead of counting only zero-crossings of cross-spectrum.
 
-\subsection{GSDF}
-  }
+\vspace{1em}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Array-based GSDF}{name=gsdf,column=0,below=noise,span=1,above=bottom}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Array-based GSDF method is developed from Generalized Seismological Data Functionals method (Gee et al,.1992).
+\textbf{\large Array-based GSDF}
+
 Array-based GSDF method measures the Rayleigh wave phase difference between nearby stations by fitting a five-parameter wavelet to the narrow-band filtered cross-correlation of the seismograms. The wavelet can be presented as (Gee \& Jordan, 1992):
 \begin{equation}
 F_i W C(t) \approx A \exp \left[ - \frac{\sigma_i^2(t -t_g)^2}{2} \right] \cos \left[ \omega_i(t-t_p) \right]
 \label{eqn:gsdf}
 \end{equation}
 where $F_i$ is the ith narrow-band filter function, $W$ is window function, $C$ is the cross-correlation function, $\sigma_i$ is the band width of the filter, $\sigma_i$ is the center frequency of the filter, $t_g$ and $t_p$ are the relative group delay and phase delay between these two stations, perspectively.
-  }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Eikonal Tomography}{name=eikonal,column=1,span=1,below=introduction,above=bottom}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{1em}
+
+\textbf{\large Eikonal Tomography}
+
+For each ``event'', Eikonal tomography calculate the distribution of slowness vector based on the phase difference measurement between nearby stations. 
   }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Results}{name=results,column=2,span=2,row=0}{
