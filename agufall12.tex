@@ -49,6 +49,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\columnsep}{0.7em}
 \setlength{\columnseprule}{0mm}
+%\setlength{\parindent}{2em}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,7 +81,7 @@
 }
 \definecolor{white}{rgb}{1,1,1}
 \definecolor{lightblue}{rgb}{0.835,0.9,0.937}
-\definecolor{darkblue}{rgb}{0.05,0.04,0.8}
+\definecolor{darkblue}{rgb}{0.2,0.2,0.7}
 \begin{poster}{
   % Show grid to help with alignment
   grid=false,
@@ -97,15 +98,16 @@
   boxColorOne=lightblue,
   boxColorTwo=lightblue,
   % Format of textbox
-  textborder=rounded,
+  textborder=rectangle,
   % Format of text header
   eyecatcher=false,
   headerborder=open,
-  headerheight=0.12\textheight,  % title size
+  headerheight=0.10\textheight,  % title size
   headershape=rounded,
   headershade=plain,
   headerfont=\LARGE\textsf, %Sans Serif
   boxshade=plain,
+  textfont={\setlength{\parindent}{1.2em}},
 %  background=shade-tb,
   background=plain,
   linewidth=2pt,
@@ -115,24 +117,30 @@
   % Title
   {\sf %Sans Serif
   %\bf% Serif
-  \vspace{0.8em}
-
-  Imaging Crust and Mantle Structure beneath the D'Entrecasteaux 
-  Islands from Rayleigh Wave Tomography}
+  \vspace{1.0em}
+  \textbf{T43E-2719} \hspace{0.1em}
+ Imaging Crust and Mantle Structure beneath the D'Entrecasteaux Islands from Rayleigh Wave Tomography
+ }
   % Authors
   {\sf %Sans Serif
   % Serif
-  Ge Jin, James Gaherty, Geoff Abers, YoungHee Kim, Zach Eilon, Roger Buck, Ron Varave \\
-  \small{ AGU 2012 Fall Meeting:\textbf{T43E-2719} Contact Email: ge.jin@ldeo.columbia.edu}
-    }
-  % University logo
-  {
-  {\begin{minipage}{35em}
-	  \vfill
-	  \hfill
-		\includegraphics[width=30em]{pics/ldeologo}
-  \end{minipage}}
+  \vspace{-3.0ex}
+  \begin{multicols}{2}
+
+	  {\LARGE Ge Jin, James Gaherty, Geoff Abers, YoungHee Kim, Zach Eilon, Roger Buck, Ron Verave}
+
+  {\large AGU 2012 Fall Meeting:\textbf{T43E-2719} Contact Email: ge.jin@ldeo.columbia.edu}
+
+	\columnbreak
+	\begin{flushright}
+		\includegraphics[height=5ex]{pics/ldeologo}
+	\end{flushright}
+
+	\end{multicols}
   }
+  % University logo
+%  {
+%  }
 
   \tikzstyle{light shaded}=[top color=baposterBGtwo!30!white,bottom color=baposterBGone!30!white,shading=axis,shading angle=30]
 
@@ -156,7 +164,7 @@
       \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=baposterBGone!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Introduction}{name=introduction,column=0,row=0,span=1}{
+  \headerbox{Introduction}{name=introduction,column=0,row=0,span=2}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Ultra high pressure (UHP) terranes are generally considered as continental crustal material being subducted to mantle depth and then exhumed to surface. The youngest UHP rocks in the world are found in the D'Entrecasteaux Islands, Papua New Guinea. These 7-8 Ma coesite-eclogite face rocks indicate different geological history from other UHP rocks for the exhumation process not associating with the subduction either spacially or temporally. The burial of these UHP rocks is thought to be during the arc-continent collision between Australian Plate and Papua New Guinea mainland about 58Ma ago (Lus et al., 2004, Ellis et al., 2011). And afterwards they remained mantle depth for ~30Ma before rapidly exhumed to surface from ~5Ma at the rate around 1cm/yr (Baldwin et al., 2004; Gordon et al., 2012). 
 
@@ -166,17 +174,36 @@ In this study we investigate the dynamic processes driving uplift and extension 
  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Data}{name=data,column=0,span=1,below=introduction,above = bottom}{
+  \headerbox{Data}{name=data,column=1,span=1,below=introduction,above = bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+Ambient Noise Ray Coverage
+
+\includegraphics[width=0.50\linewidth]{pics/topo/raycover} 
+
+Bessel Function Fitting
+
+\begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
+	\includegraphics[width=0.60\linewidth]{pics/besselfit/besselfitwaveform} & 
+	\includegraphics[width=0.26\linewidth]{pics/besselfit/besselfitphv} 
+\end{tabular}
+
+Earthquake Distribution
+
+\includegraphics[width=0.60\linewidth]{pics/eqlocation/eqloc}
+
+Five Parameter Wavelet fitting
+
+	\includegraphics[width=0.60\linewidth]{pics/gsdffit/gsdfwaveletfit} 
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Method}{name=method2,column=1,span=1,row=0}{
+  \headerbox{Method}{name=method,column=0,span=1,below=introduction}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{\large Ambient Noise}
+\noindent\textbf{\large Ambient Noise}
 
-Because short intra-station distance violate the far-field estimation of time-domain ambient noise method, we applied the original Aki's spectral formulation which was further developed by Eskstr\"{o}m et al., 2009. The key result of these papers can be presented as equation~\ref{eqn:aki}:
+Because short intra-station distance violate the far-field estimation of time-domain ambient noise method, we applied the original Aki's spectral formulation which was further developed by Esktr\"{o}m et al., 2009. The key result of these papers can be presented as equation~\ref{eqn:aki}:
 \begin{equation}
 \bar{\rho}(r,\omega) = J_0\left(\frac{\omega}{c(\omega)}r \right)
 \label{eqn:aki}
@@ -187,7 +214,7 @@ In this study, we fit the whole Bessel function in the interested frequency band
 
 \vspace{1em}
 
-\textbf{\large Array-based GSDF}
+\noindent\textbf{\large Array-based GSDF}
 
 Array-based GSDF method measures the Rayleigh wave phase difference between nearby stations by fitting a five-parameter wavelet to the narrow-band filtered cross-correlation of the seismograms. The wavelet can be presented as (Gee \& Jordan, 1992):
 \begin{equation}
@@ -198,47 +225,73 @@ where $F_i$ is the ith narrow-band filter function, $W$ is window function, $C$ 
 
 \vspace{1em}
 
-\textbf{\large Eikonal Tomography}
+\noindent\textbf{\large Eikonal Tomography}
 
-For each ``event'', Eikonal tomography reconstruct the slowness vector of wave field based on the phase difference measurement between nearby stations. In this study, event wave field can be either the Rayleigh wave of an earthquake, or Green functions from one station's ambient noise cross-correlation with all other stations. Any phase difference measurement $\delta t$ between two stations can be presented as:
+Phase velocity of earthquake dataset is calculated by Eikonal Tomography which was first introduced to surface wave measurement by Lin et al, 2009. We modified this method to make it more applicable on irregular station spacing. For each event, Eikonal tomography reconstruct the slowness vector of wave field based on the phase difference measurement between nearby stations. Any phase difference $\delta t$ between two stations can be presented as:
 \begin{equation}
 	\delta t = \int\limits_{\vec{r}} \vec{S} \cdot d\vec{r}
 \label{eqn:eikonal}
 \end{equation}
 where $\vec{S}$ is the slowness vector for the event, $\vec{r}$ is a path connecting two stations. We found that the great circle path between these two stations provides most stable inversion result.
+
+The Ambient Noise tomography result in this poster is inversed by ray theory.
+
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Reference}{name=ref,column=0,span=1,below=method,above = bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Rayleigh Wave Phase Velocity}{name=results,column=2,span=2,row=0}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{center}
+
+	  Ambient Noise Ray Theory Tomography
+
+	  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
+		\includegraphics[width=0.18\linewidth]{pics/noiseray/phasev_20}&
+		\includegraphics[width=0.18\linewidth]{pics/noiseray/phasev_14}&
+		\includegraphics[width=0.18\linewidth]{pics/noiseray/phasev_09}&
+		\includegraphics[width=0.18\linewidth]{pics/noiseray/phasev_05}&
+		\includegraphics[width=0.18\linewidth]{pics/noiseray/phasev_03}\\
+		 6.6s &  8.7s  &   11.6s &   15.8s & 19.4s \\[0.8em]
+	  \end{tabular}
+
+	  Teleseismic Eikonal Tomography
+
+	  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
+		\includegraphics[width=0.18\linewidth]{pics/eq/eqeikonal_0}&
+		\includegraphics[width=0.18\linewidth]{pics/eq/eqeikonal_1}&
+		\includegraphics[width=0.18\linewidth]{pics/eq/eqeikonal_2}&
+		\includegraphics[width=0.18\linewidth]{pics/eq/eqeikonal_3}&
+		\includegraphics[width=0.18\linewidth]{pics/eq/eqeikonal_4}\\
+		 20s &  25s  &   32s &  40s &  50s\\[0.8em]
+	  \end{tabular}
+  \end{center}
   }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Results}{name=results,column=2,span=2,row=0}{
+  \headerbox{1D Shear Velocity Inversion}{name=dispinv,column=2,span=1,above=bottom,below=results}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  Result from Ambient Noise:
-  \begin{center}
-	  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
-		\includegraphics[width=0.20\linewidth]{pics/noise/phasev_13}&
-		\includegraphics[width=0.20\linewidth]{pics/noise/phasev_10}&
-		\includegraphics[width=0.20\linewidth]{pics/noise/phasev_07}&
-		\includegraphics[width=0.20\linewidth]{pics/noise/phasev_04}\\
-		 9.1s &  10.9s  &   13.4s &   17.4s \\[0.8em]
-	  \end{tabular}
-  \end{center}
+\begin{multicols}{2}
+	\includegraphics[width=0.90\linewidth]{pics/topo/regionmarker} 
 
-	  Result from earthquake:
+	\columnbreak
 
-  \begin{center}
+	In this study, we applied the 1D shear velocity model for the average dispersion curve of two typical regions. In the figure to the left, the red circle centering at Goodenough Island, illustrates the area on the rift extension.
+
+\end{multicols}
+%  \begin{center}
 	  \begin{tabular}{@{}c@{ }c@{ }c@{ }c@{}@{ }@{ }c@{ }c@{ }c@{ }c@{ }}
-		\includegraphics[width=0.20\linewidth]{pics/eq/eqeikonal_0}&
-		\includegraphics[width=0.20\linewidth]{pics/eq/eqeikonal_1}&
-		\includegraphics[width=0.20\linewidth]{pics/eq/eqeikonal_2}&
-		\includegraphics[width=0.20\linewidth]{pics/eq/eqeikonal_3}\\
-		 20s &  25s  &   32s &  40s \\[0.8em]
+		\includegraphics[height=0.40\linewidth]{pics/dispinv/island_mainland_mod} &
+		\includegraphics[height=0.40\linewidth]{pics/dispinv/island_mainland_dispfit} 
 	  \end{tabular}
-  \end{center}
+%  \end{center}
   }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Conclusion}{name=conclusion,column=2,span=1,above=bottom,below=results}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  }%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Future Work}{name=future,column=3,span=1,above=bottom,below=results}{
+  \headerbox{Conclusion}{name=conclusion,column=3,span=1,above=bottom,below=results}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \smaller 
   }%
